@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Netguru
+
+# Caskroom - http://caskroom.io/
+
+brew_cask_expand_alias() {
+  brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
+}
+
+brew_cask_is_installed() {
+  local NAME=$(brew_cask_expand_alias "$1")
+  brew cask list -1 | grep -Fqx "$NAME"
+}
+
+brew_cask_install_or_upgrade() {
+  if brew_cask_is_installed "$1"; then
+  	echo "$1 is already installed, brew cask upgrade is not yet implmented"
+  else
+    brew cask install "$@"
+  fi
+}
+
+brew_install_or_upgrade 'caskroom/cask/brew-cask'
+
+fancy_echo "Installing clipmenu for handling copy/paste better ..."
+  brew_cask_install_or_upgrade clipmenu
+fancy_echo "Installing github app - in case you need a nice diff ..."
+  brew_cask_install_or_upgrade github
+fancy_echo "Installing Google Chrome ..."
+  brew_cask_install_or_upgrade google-chrome
+fancy_echo "Installing Google Hangouts ... we will call you!"
+  brew_cask_install_or_upgrade google-hangouts
+fancy_echo "Installing Iterm2 - the better terminal ..."
+  brew_cask_install_or_upgrade iterm2
+fancy_echo "Installing Skitch for screenshots ..."
+  brew_cask_install_or_upgrade skitch
+fancy_echo "Installing Slack for daily communication ..."
+  brew_cask_install_or_upgrade slack
+fancy_echo "Installing Sublime Text editor ..."
+  brew_cask_install_or_upgrade sublime-text
+fancy_echo "Installing Unarchiver for handling zip/rar files ..."
+  brew_cask_install_or_upgrade the-unarchiver

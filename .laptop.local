@@ -41,3 +41,5 @@ fancy_echo "Installing Sublime Text editor ..."
   brew_cask_install_or_upgrade sublime-text
 fancy_echo "Installing Unarchiver for handling zip/rar files ..."
   brew_cask_install_or_upgrade the-unarchiver
+fancy_echo "Installing Screenhero for better screensharing ..."
+  brew_cask_install_or_upgrade screenhero

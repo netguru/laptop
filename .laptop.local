@@ -21,7 +21,7 @@ brew_cask_install_or_upgrade() {
   fi
 }
 
-brew_install_or_upgrade 'caskroom/cask/brew-cask'
+brew_cask_install_or_upgrade 'caskroom/cask/brew-cask'
 
 fancy_echo "Installing clipmenu for handling copy/paste better ..."
   brew_cask_install_or_upgrade clipmenu
